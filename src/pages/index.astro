@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: "Crypto Data Pipeline",
+    description: "Pipeline ETL automatizado para la extracción, limpieza y persistencia de métricas de mercado en tiempo real.",
+    tags: ["Python", "SQL", "ETL", "Databricks"],
+    image: "/images/proyecto1.png",
+    repoUrl: "#",
+    liveUrl: "#",
+  },
+  {
+    title: "Olist Analytics Pipeline",
+    description: "Modelo dimensional y transformaciones analíticas con dbt para optimización de consultas y reportes de e-commerce.",
+    tags: ["dbt", "SQL", "Data Modeling", "Cloud"],
+    image: "/images/proyecto2.png",
+    repoUrl: "#",
+    liveUrl: "#",
+  },
+  {
+    title: "Monitor de Inflación",
+    description: "Pipeline end-to-end de consumo de APIs públicas, procesamiento de series temporales macroeconómicas y visualización interactiva.",
+    tags: ["Python", "APIs", "Data Analytics", "Streamlit"],
+    image: "/images/proyecto3.png",
+    repoUrl: "#",
+    liveUrl: "#",
+  },
+];
+
+const skills = [
+  { category: "Lenguajes & Querying", items: ["SQL (Avanzado)", "Python", "Bash"] },
+  { category: "Data Engineering & ETL", items: ["dbt", "PySpark / Databricks", "Modelado Dimensional (Star Schema)", "ETL / ELT Pipelines"] },
+  { category: "Almacenamiento & Cloud", items: ["Delta Lake", "Data Lakehouse", "AWS / GCP (Fundamentos)"] },
+  { category: "Herramientas & Ecosistema", items: ["Git / GitHub", "Docker", "Streamlit", "CI/CD Básico"] },
+];
+---
+
+<Layout title="Data Engineer Jr. | Portfolio">
+  <!-- 1. Header sticky con efecto Glassmorphism y botón de Dark / Light Mode -->
+  <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/70 dark:bg-black/50 border-b border-zinc-200 dark:border-zinc-800/80 transition-colors">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <a href="#" class="text-sm font-semibold tracking-tight text-zinc-900 hover:text-zinc-700 dark:text-zinc-100 dark:hover:text-zinc-300 transition-colors">
+        DE<span class="text-indigo-600 dark:text-zinc-500">.portfolio</span>
+      </a>
+
+      <div class="flex items-center gap-4 sm:gap-6">
+        <nav>
+          <ul class="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
+            <li><a href="#habilidades" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Habilidades</a></li>
+            <li><a href="#proyectos" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Proyectos</a></li>
+            <li><a href="#contacto" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Contacto</a></li>
+          </ul>
+        </nav>
+
+        <!-- Botón Toggle Dark / Light Mode -->
+        <button
+          id="theme-toggle"
+          type="button"
+          aria-label="Alternar modo claro y oscuro"
+          class="p-2 rounded-lg text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200/70 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/70 transition-colors focus:outline-none"
+        >
+          <!-- Ícono de Sol (Visible en Dark Mode para cambiar a Light) -->
+          <svg class="w-4 h-4 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <!-- Ícono de Luna (Visible en Light Mode para cambiar a Dark) -->
+          <svg class="w-4 h-4 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20 w-full space-y-20 sm:space-y-28">
+    <!-- 2. Hero Section con gradiente ambiental y animaciones fade-in-up -->
+    <section class="relative pt-2 sm:pt-6">
+      <div
+        class="pointer-events-none absolute -top-16 -right-12 sm:-top-24 sm:-right-20 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-500/15 via-purple-500/10 to-transparent dark:from-indigo-600/20 dark:via-purple-600/10 blur-3xl -z-10"
+        aria-hidden="true"
+      ></div>
+
+      <div class="space-y-6">
+        <div class="animate-fade-in-up inline-flex items-center gap-2 px-3 py-1 text-xs rounded-full border border-zinc-300 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/60 text-zinc-700 dark:text-zinc-400 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Disponible para nuevas oportunidades
+        </div>
+
+        <h1 class="animate-fade-in-up animation-delay-150 text-3xl sm:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          Data Engineer Jr.
+        </h1>
+
+        <p class="animate-fade-in-up animation-delay-300 text-zinc-600 dark:text-zinc-400 text-base sm:text-lg max-w-2xl leading-relaxed">
+          Construcción de pipelines de datos confiables, modelado analítico y arquitecturas modernas en la nube. Enfoque práctico en SQL, transformaciones con dbt y flujos ETL escalables.
+        </p>
+
+        <div class="animate-fade-in-up animation-delay-450 flex flex-wrap gap-3 pt-2">
+          <a
+            href="#proyectos"
+            class="px-4 py-2 text-sm font-medium rounded-lg bg-zinc-900 text-zinc-100 hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 transition-all shadow-sm hover:shadow"
+          >
+            Ver proyectos
+          </a>
+          <a
+            href="#contacto"
+            class="px-4 py-2 text-sm font-medium rounded-lg border border-zinc-300 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/50 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all shadow-sm"
+          >
+            Contactar
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 & 4. Sección Habilidades con Scroll Reveal y tarjetas adaptadas a Light/Dark -->
+    <section id="habilidades" class="scroll-reveal opacity-0 translate-y-10 transition-all duration-700 ease-out space-y-6 scroll-mt-20">
+      <div class="border-b border-zinc-200 dark:border-zinc-800 pb-2">
+        <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">Habilidades</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {skills.map((skillGroup) => (
+          <div class="p-4 sm:p-5 rounded-xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-900/30 space-y-3 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-400 dark:hover:border-zinc-600 hover:shadow-md dark:hover:shadow-zinc-950/40 shadow-sm">
+            <h3 class="text-sm font-medium text-zinc-800 dark:text-zinc-300">{skillGroup.category}</h3>
+            <div class="flex flex-wrap gap-2">
+              {skillGroup.items.map((item) => (
+                <span class="text-xs px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800/60 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700/40 transition-colors hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-zinc-900 dark:hover:text-zinc-100">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 3 & 5. Sección Proyectos con formato responsivo, zoom y adaptación a Light/Dark -->
+    <section id="proyectos" class="scroll-reveal opacity-0 translate-y-10 transition-all duration-700 ease-out space-y-6 scroll-mt-20">
+      <div class="border-b border-zinc-200 dark:border-zinc-800 pb-2">
+        <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">Proyectos</h2>
+      </div>
+      <div class="grid grid-cols-1 gap-6">
+        {projects.map((project) => (
+          <article class="group relative overflow-hidden p-5 sm:p-6 rounded-xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-900/30 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-400 dark:hover:border-zinc-600 hover:shadow-lg dark:hover:shadow-zinc-950/60 shadow-sm">
+            <!-- Gradiente de fondo sutil visible en hover -->
+            <div
+              class="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-transparent dark:from-indigo-500/10 dark:via-purple-500/5 dark:to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              aria-hidden="true"
+            ></div>
+
+            <div class="relative z-10 flex flex-col md:flex-row gap-6 items-center">
+              <!-- Contenedor de la Imagen con zoom sutil -->
+              <div class="w-full md:w-5/12 aspect-video overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-950/70 border border-zinc-200 dark:border-zinc-800/60 shrink-0">
+                <img
+                  src={project.image}
+                  alt={`Screenshot del proyecto ${project.title}`}
+                  loading="lazy"
+                  class="w-full h-full object-cover object-center rounded-lg transition-transform duration-500 ease-out group-hover:scale-105 hover:scale-105"
+                />
+              </div>
+
+              <!-- Contenido de texto y enlaces -->
+              <div class="w-full md:w-7/12 flex flex-col justify-between space-y-4">
+                <div class="space-y-2">
+                  <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                    <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-white transition-colors">
+                      {project.title}
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs shrink-0">
+                      <a
+                        href={project.repoUrl}
+                        class="group/link inline-flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors underline-offset-4 hover:underline"
+                      >
+                        <span>Repositorio</span>
+                        <span class="inline-block transition-transform duration-200 group-hover/link:translate-x-1" aria-hidden="true">&rarr;</span>
+                      </a>
+                      <a
+                        href={project.liveUrl}
+                        class="group/link inline-flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors underline-offset-4 hover:underline"
+                      >
+                        <span>Demo</span>
+                        <span class="inline-block transition-transform duration-200 group-hover/link:translate-x-1" aria-hidden="true">&rarr;</span>
+                      </a>
+                    </div>
+                  </div>
+                  <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-1">
+                  {project.tags.map((tag) => (
+                    <span class="text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700/30">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (Contacto) -->
+  <footer id="contacto" class="border-t border-zinc-200 dark:border-zinc-800/80 mt-auto bg-white/60 dark:bg-zinc-950/80 backdrop-blur-sm scroll-mt-20 transition-colors">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-12 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-zinc-500 dark:text-zinc-400">
+      <div class="space-y-1 text-center sm:text-left">
+        <p class="font-medium text-zinc-800 dark:text-zinc-200">Contacto</p>
+        <p class="text-zinc-500">¿Tienes una propuesta o quieres charlar sobre datos? Escríbeme.</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors">GitHub</a>
+        <span class="text-zinc-300 dark:text-zinc-700">&bull;</span>
+        <a href="#" class="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors">LinkedIn</a>
+        <span class="text-zinc-300 dark:text-zinc-700">&bull;</span>
+        <a href="#" class="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors">Email</a>
+      </div>
+    </div>
+  </footer>
+</Layout>
