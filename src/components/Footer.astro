@@ -1,0 +1,53 @@
+---
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const currentYear = new Date().getFullYear();
+---
+
+<footer id="contacto" class="border-t border-zinc-200/80 dark:border-zinc-800/80 mt-auto bg-white/50 dark:bg-zinc-950/50 backdrop-blur-xs scroll-mt-20 transition-colors">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-12 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-zinc-500 dark:text-zinc-400">
+    <div class="space-y-1 text-center sm:text-left">
+      <p class="font-medium text-zinc-900 dark:text-zinc-200">
+        Bernardo Arrechea &bull; <span class="font-mono text-zinc-500 dark:text-zinc-400">Data Engineer Jr.</span>
+      </p>
+      <p class="text-zinc-500 dark:text-zinc-500">
+        {t('sections.contact_desc')}
+      </p>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a
+        href="https://github.com/brab0210"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors"
+      >
+        GitHub
+      </a>
+      <span class="text-zinc-300 dark:text-zinc-700" aria-hidden="true">&bull;</span>
+      <a
+        href="https://linkedin.com/in/bernardoarrechea"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors"
+      >
+        LinkedIn
+      </a>
+      <span class="text-zinc-300 dark:text-zinc-700" aria-hidden="true">&bull;</span>
+      <a
+        href="mailto:bernardoarrechea@gmail.com"
+        class="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors"
+      >
+        bernardoarrechea@gmail.com
+      </a>
+    </div>
+  </div>
+</footer>
+

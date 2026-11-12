@@ -1,0 +1,59 @@
+---
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div
+  class="inline-flex items-center rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100/80 dark:bg-zinc-900/80 p-0.5 text-xs font-mono font-medium"
+  role="group"
+  aria-label={t('lang.toggle_label')}
+>
+  <a
+    href="/es/"
+    class:list={[
+      "px-2 py-1 rounded transition-colors",
+      lang === 'es'
+        ? "bg-white dark:bg-zinc-800 text-zinc-950 dark:text-zinc-50 shadow-xs font-semibold"
+        : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+    ]}
+    aria-current={lang === 'es' ? 'page' : undefined}
+  >
+    ES
+  </a>
+  <span class="text-zinc-300 dark:text-zinc-700 select-none" aria-hidden="true">/</span>
+  <a
+    href="/en/"
+    class:list={[
+      "px-2 py-1 rounded transition-colors",
+      lang === 'en'
+        ? "bg-white dark:bg-zinc-800 text-zinc-950 dark:text-zinc-50 shadow-xs font-semibold"
+        : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+    ]}
+    aria-current={lang === 'en' ? 'page' : undefined}
+  >
+    EN
+  </a>
+</div>
+
+<script>
+  // Preserve current hash (anchor) when switching language
+  document.querySelectorAll('a[href^="/es/"], a[href^="/en/"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const hash = window.location.hash;
+      if (hash) {
+        const href = link.getAttribute('href');
+        if (href && !href.includes('#')) {
+          link.setAttribute('href', href + hash);
+        }
+      }
+    });
+  });
+</script>
+

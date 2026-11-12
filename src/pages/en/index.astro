@@ -1,0 +1,216 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import Footer from '../../components/Footer.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+
+// Authentic projects from contexto_portfolio.txt translated to English
+const projects = [
+  {
+    title: "Crypto Data Pipeline (CoinGecko)",
+    tagline: "Automated ETL pipeline in Databricks with Medallion architecture and Streamlit dashboard",
+    description: "Automated extraction of cryptocurrency market metrics from the CoinGecko API. Raw PySpark ingestion into Bronze, data typing and cleansing with pure SQL in Silver, and analytical aggregations in Gold, orchestrated using Databricks Workflows.",
+    stack: ["Databricks", "PySpark", "SQL", "Delta Lake", "Streamlit"],
+    highlights: [
+      "Orchestration via Databricks Workflows with 4 dependent tasks (Bronze ➔ Silver ➔ Gold ➔ Tests).",
+      "Historical data retention (7 days) using MERGE and DELETE operations.",
+      "Resilient connection to Databricks SQL Warehouse from Streamlit with retry logic and TTL.",
+    ],
+    image: "/images/proyecto1.png",
+    repoUrl: "https://github.com/brab0210/ml-data-pipeline",
+    liveUrl: "https://ml-data-pipeline-jrp6rdenslzbvz2imfj5pf.streamlit.app/",
+  },
+  {
+    title: "Olist Analytics Pipeline (dbt)",
+    tagline: "Dimensional transformation with dbt and Databricks on Brazilian e-commerce dataset",
+    description: "Dimensional model (Star Schema) built with dbt Cloud over Unity Catalog in Databricks. Structured into fact tables (fct_orders, fct_payments) and dimensions (dim_customers, dim_products) for logistics analysis, payment method breakdowns, and regional coverage.",
+    stack: ["dbt Cloud", "Databricks", "SQL", "Unity Catalog", "Streamlit"],
+    highlights: [
+      "Star Schema dimensional modeling for high-performance analytical queries.",
+      "Rigorous quality control with dbt tests (unique, not_null) and deduplication with ROW_NUMBER().",
+      "Analytical dashboard examining delivery lead times, logistics delays, and revenue distribution.",
+    ],
+    image: "/images/proyecto2.png",
+    repoUrl: "https://github.com/brab0210/dbt-olist-analytics",
+    liveUrl: "https://dbt-olist-analytics-k9tt9jdwsgyec7q27astkf.streamlit.app/",
+  },
+  {
+    title: "Inflation Monitor (INDEC API)",
+    tagline: "Public API consumption, macroeconomic time-series processing, and visual analytics",
+    description: "End-to-end data pipeline consuming Argentina's official statistics API (datos.gob.ar). Nested JSON parsing via from_json and explode in SQL, month-over-month and year-over-year rate calculations with window functions (LAG), and Streamlit visualization.",
+    stack: ["Python", "Analytical SQL", "Databricks", "Streamlit"],
+    highlights: [
+      "Nested JSON parsing in SQL for structured time-series normalization.",
+      "Mathematical inflation calculation using analytical window functions (LAG).",
+      "Interactive trend visualizations for macroeconomic analysis.",
+    ],
+    image: "/images/proyecto3.png",
+    repoUrl: "https://github.com/brab0210/indec-inflation-dashboard",
+    liveUrl: "#",
+  },
+];
+
+const skillCategories = [
+  {
+    category: "Ingestion & ETL Pipelines",
+    items: ["Python (Requests, PySpark)", "Analytical SQL", "Databricks Workflows (Jobs)", "REST APIs", "Medallion Architecture"],
+  },
+  {
+    category: "Transformation & Modeling",
+    items: ["dbt (Core / Cloud)", "Dimensional Modeling (Star Schema)", "Window Functions (LAG, LEAD)", "Cleansing & Deduplication"],
+  },
+  {
+    category: "Storage & Lakehouse",
+    items: ["Delta Lake (ACID, MERGE)", "Databricks Unity Catalog", "PostgreSQL", "Data Lakehouse"],
+  },
+  {
+    category: "Data Quality, Delivery & Tools",
+    items: ["dbt tests (not_null, unique)", "Streamlit", "Git / GitHub", "Docker (Fundamentals)", "Basic CI/CD"],
+  },
+];
+---
+
+<Layout lang={lang}>
+  <Header lang={lang} />
+
+  <main id="main-content" class="flex-1 max-w-5xl mx-auto px-4 sm:px-6 w-full space-y-16 sm:space-y-24">
+    <!-- Hero Section -->
+    <Hero lang={lang} />
+
+    <!-- Technical Projects Section -->
+    <section id="proyectos" class="scroll-reveal opacity-0 translate-y-8 transition-all duration-500 ease-out space-y-8 scroll-mt-20">
+      <div class="border-b border-zinc-200/80 dark:border-zinc-800/80 pb-3">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50">
+          {t('sections.projects_title')}
+        </h2>
+        <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+          {t('sections.projects_subtitle')}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8">
+        {projects.map((project) => (
+          <article class="group relative overflow-hidden p-5 sm:p-6 rounded-xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white/90 dark:bg-zinc-900/40 transition-all duration-300 hover:border-zinc-400 dark:hover:border-zinc-600 hover:shadow-lg dark:hover:shadow-zinc-950/60 shadow-xs">
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+              <!-- Screenshot / Preview -->
+              <div class="w-full md:w-5/12 aspect-video overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800 shrink-0">
+                <img
+                  src={project.image}
+                  alt={`Screenshot or diagram for ${project.title}`}
+                  loading="lazy"
+                  class="w-full h-full object-cover object-center rounded-lg transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+              </div>
+
+              <!-- Technical Details -->
+              <div class="w-full md:w-7/12 flex flex-col justify-between space-y-4">
+                <div class="space-y-2">
+                  <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                    <h3 class="text-base sm:text-lg font-bold text-zinc-950 dark:text-zinc-50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      {project.title}
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs shrink-0 font-mono">
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1 text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-100 transition-colors underline-offset-4 hover:underline"
+                      >
+                        <span>GitHub</span>
+                        <span aria-hidden="true">&nearr;</span>
+                      </a>
+                      {project.liveUrl !== '#' && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 font-medium transition-colors underline-offset-4 hover:underline"
+                        >
+                          <span>Live App</span>
+                          <span aria-hidden="true">&nearr;</span>
+                        </a>
+                      )}
+                    </div>
+                  </div>
+
+                  <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                <!-- Technical Highlights -->
+                <ul class="space-y-1.5 text-xs text-zinc-600 dark:text-zinc-400 list-disc list-inside">
+                  {project.highlights.map((item) => (
+                    <li class="leading-relaxed">
+                      <span class="text-zinc-800 dark:text-zinc-300">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <!-- Stack Tags -->
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  {project.stack.map((tag) => (
+                    <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700/60">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="habilidades" class="scroll-reveal opacity-0 translate-y-8 transition-all duration-500 ease-out space-y-6 scroll-mt-20">
+      <div class="border-b border-zinc-200/80 dark:border-zinc-800/80 pb-3">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50">
+          {t('sections.skills_title')}
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {skillCategories.map((group) => (
+          <div class="p-5 rounded-xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white/90 dark:bg-zinc-900/40 space-y-3 shadow-xs">
+            <h3 class="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+              {group.category}
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800/70 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700/60">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="sobre-mi" class="scroll-reveal opacity-0 translate-y-8 transition-all duration-500 ease-out space-y-6 scroll-mt-20">
+      <div class="border-b border-zinc-200/80 dark:border-zinc-800/80 pb-3">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50">
+          {t('sections.about_title')}
+        </h2>
+      </div>
+
+      <div class="p-6 rounded-xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white/90 dark:bg-zinc-900/40 space-y-4 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed shadow-xs">
+        <p>
+          I am a Junior Data Engineer with a strong inclination toward <strong class="text-zinc-900 dark:text-zinc-200">code quality and analytical modeling in SQL</strong>. My approach centers on thoroughly understanding each transformation stage before automating, prioritizing reproducibility, clean documentation, and robust schema management.
+        </p>
+        <p>
+          I have built end-to-end solutions under real-world constraints, efficiently leveraging tools like <span class="font-mono text-zinc-800 dark:text-zinc-200">Databricks Community Edition</span>, <span class="font-mono text-zinc-800 dark:text-zinc-200">dbt Cloud</span>, <span class="font-mono text-zinc-800 dark:text-zinc-200">Streamlit Community Cloud</span>, and <span class="font-mono text-zinc-800 dark:text-zinc-200">GitHub Actions</span> to design production-ready architectures without unnecessary overhead.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>
+
