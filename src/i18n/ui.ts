@@ -28,7 +28,7 @@ export const ui = {
     'hero.role': 'Data Engineer Jr.',
     'hero.tagline_highlight': 'Pipelines confiables',
     'hero.tagline': 'y modelado analítico para transformar datos crudos en decisiones de negocio.',
-    'hero.bio': 'Especializado en arquitecturas lakehouse con Databricks, transformaciones en SQL y dbt, y orquestación reproducible. Enfoque práctico en calidad de datos y buenas prácticas de ingeniería de software aplicadas a datos.',
+    'hero.bio': 'Enfocado en arquitecturas lakehouse con Databricks, transformaciones en SQL y dbt, y orquestación reproducible. Enfoque práctico en calidad de datos y buenas prácticas de ingeniería de software aplicadas a datos.',
     'hero.cta_projects': 'Explorar proyectos',
     'hero.cta_resume': 'Descargar CV',
     'hero.cta_contact': 'Contactar',
@@ -61,7 +61,7 @@ export const ui = {
     'about.section_badge': '[03] // PERFIL & TRAYECTORIA',
     'about.section_title': 'Sobre Mí & Enfoque de Ingeniería',
     'about.section_subtitle': 'Data Engineer Jr. con base en desarrollo de software, mentalidad analítica y un fuerte compromiso con el modelado en SQL, la calidad de datos y la reproducibilidad.',
-    'about.story_p1': 'Soy Data Engineer Jr con una sólida formación en lógica de programación y desarrollo de software, especializado en el ecosistema Lakehouse y pipelines analíticos. Mi transición hacia la ingeniería de datos nace del interés por resolver el desafío fundamental: transformar volúmenes de datos crudos y heterogéneos en capas confiables, estructuradas y listas para la toma de decisiones.',
+    'about.story_p1': 'Soy Data Engineer Jr con una sólida formación en lógica de programación y desarrollo de software, enfocado en el ecosistema Lakehouse y pipelines analíticos. Mi transición hacia la ingeniería de datos nace del interés por resolver el desafío fundamental: transformar volúmenes de datos crudos y heterogéneos en capas confiables, estructuradas y listas para la toma de decisiones.',
     'about.story_p2': 'Mi diferencial radica en combinar buenas prácticas de desarrollo de software (control de versiones estructurado, modularización, pruebas automatizadas y desacoplamiento) con rigor analítico en SQL y dbt. Prefiero comprender en profundidad cada etapa de transformación antes de apresurar la automatización, asegurando que cada tabla tenga linaje claro y reglas de validación explícitas.',
     'about.principles_title': 'Principios de Ingeniería de Datos',
     'about.p1_title': 'SQL Analítico sobre scripts imperativos',
@@ -150,7 +150,7 @@ export const ui = {
 
     // General Sections
     'sections.projects_title': 'Technical Projects & Case Studies',
-    'sections.projects_subtitle': 'Production-ready architectures with verifiable source code, engineering decisions, SQL/dbt modeling, and quality tests.',
+    'sections.projects_subtitle': 'End-to-end data engineering projects with documented architecture, verifiable source code, engineering decisions, SQL/dbt modeling, and quality tests.',
     'sections.skills_title': 'Technical Skills',
     'sections.about_title': 'About Me & Education',
     'sections.contact_title': 'Get In Touch',
