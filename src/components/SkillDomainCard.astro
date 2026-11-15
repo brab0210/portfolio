@@ -1,0 +1,99 @@
+---
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import type { SkillDomain } from '../data/skills';
+
+interface Props {
+  domain: SkillDomain;
+  lang: Lang;
+}
+
+const { domain, lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div
+  class="group rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-900/40 p-5 sm:p-6 space-y-5 shadow-xs hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 flex flex-col justify-between"
+>
+  <div class="space-y-4">
+    <!-- Header: Domain Code Badge & Title -->
+    <div class="space-y-1.5 border-b border-zinc-200/80 dark:border-zinc-800/80 pb-3.5">
+      <div class="flex items-center justify-between gap-2">
+        <span class="font-mono text-[11px] font-semibold tracking-wider text-indigo-600 dark:text-indigo-400 uppercase">
+          {domain.code} // {domain.badge}
+        </span>
+        <span class="text-[10px] font-mono text-zinc-400 dark:text-zinc-500">
+          [{domain.skills.length} techs]
+        </span>
+      </div>
+      <h3 class="text-base sm:text-lg font-bold tracking-tight text-zinc-950 dark:text-zinc-50">
+        {domain.title}
+      </h3>
+      <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        {domain.description}
+      </p>
+    </div>
+
+    <!-- Skills List with Context -->
+    <div class="space-y-2">
+      {domain.skills.map((skill) => (
+        <div class="p-2.5 rounded-lg bg-zinc-50/70 dark:bg-zinc-900/50 border border-zinc-200/70 dark:border-zinc-800/70 space-y-0.5">
+          <div class="flex items-center justify-between gap-2">
+            <span class:list={[
+              "text-xs font-mono",
+              skill.isCore ? "text-zinc-950 dark:text-zinc-100 font-semibold" : "text-zinc-800 dark:text-zinc-200 font-medium"
+            ]}>
+              {skill.name}
+            </span>
+            {skill.isCore && (
+              <span class="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/50 font-medium shrink-0">
+                {t('skills.core_badge')}
+              </span>
+            )}
+          </div>
+          {skill.note && (
+            <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">
+              {skill.note}
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- Key Practices & Criteria -->
+    <div class="pt-3 border-t border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
+      <h4 class="text-[11px] font-mono font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+        {t('skills.practices_title')}
+      </h4>
+      <ul class="space-y-1.5 text-xs text-zinc-600 dark:text-zinc-400">
+        {domain.keyPractices.map((practice) => (
+          <li class="flex items-start gap-2">
+            <span class="text-indigo-500 dark:text-indigo-400 shrink-0 font-bold select-none">›</span>
+            <span class="leading-relaxed">{practice}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer: Project Evidence Link -->
+  <div class="pt-3 border-t border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-between gap-3 text-xs">
+    <div class="min-w-0">
+      <span class="text-[10px] font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500 block truncate">
+        {t('skills.applied_in')}
+      </span>
+      <span class="font-mono font-medium text-zinc-800 dark:text-zinc-200 text-xs truncate block" title={domain.appliedIn.projectTitle}>
+        {domain.appliedIn.projectTitle}
+      </span>
+    </div>
+    <a
+      href={`#${domain.appliedIn.projectId}`}
+      class="inline-flex items-center gap-1 font-mono text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors shrink-0 group/link"
+    >
+      <span>{t('skills.view_case_study')}</span>
+      <svg class="w-3.5 h-3.5 transition-transform group-hover/link:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </a>
+  </div>
+</div>

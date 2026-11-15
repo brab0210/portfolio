@@ -13,7 +13,6 @@ const t = useTranslations(lang);
 
 const siteTitle = title || t('meta.title');
 const siteDescription = description || t('meta.description');
-const currentUrl = Astro.url;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://portfolio.local');
 ---
 
@@ -87,12 +86,15 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://portfoli
 
     <!-- Script de Interactividad: Theme Toggle & Scroll Reveal -->
     <script>
-      // 1. Manejo del Theme Toggle
+      // 1. Manejo del Theme Toggle para todos los botones (desktop y mobile)
       const initTheme = () => {
-        const toggleBtn = document.getElementById('theme-toggle');
-        toggleBtn?.addEventListener('click', () => {
-          const isDark = document.documentElement.classList.toggle('dark');
-          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        const toggleBtns = document.querySelectorAll('[data-theme-toggle], #theme-toggle, #theme-toggle-mobile');
+        toggleBtns.forEach((btn) => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+          });
         });
       };
 

@@ -4,17 +4,19 @@ import { useTranslations } from '../i18n/utils';
 
 interface Props {
   lang: Lang;
+  id?: string;
 }
 
-const { lang } = Astro.props;
+const { lang, id = 'theme-toggle' } = Astro.props;
 const t = useTranslations(lang);
 ---
 
 <button
-  id="theme-toggle"
   type="button"
+  id={id}
+  data-theme-toggle
   aria-label={t('theme.toggle_label')}
-  class="relative p-2 rounded-lg text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/60 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500"
+  class="relative p-2 rounded-lg text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/60 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 shrink-0"
 >
   <!-- Sun Icon (visible in dark mode) -->
   <svg
@@ -47,4 +49,3 @@ const t = useTranslations(lang);
     />
   </svg>
 </button>
-

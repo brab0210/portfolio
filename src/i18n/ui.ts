@@ -12,7 +12,7 @@ export const ui = {
     // Metadatos & SEO
     'meta.title': 'Bernardo Arrechea | Data Engineer Jr.',
     'meta.description': 'Portfolio profesional de Bernardo Arrechea, Data Engineer Jr. especializado en pipelines ETL/ELT, modelado dimensional, SQL analítico, dbt y Databricks.',
-    
+
     // Navegación
     'nav.projects': 'Proyectos',
     'nav.skills': 'Habilidades',
@@ -22,7 +22,7 @@ export const ui = {
     'nav.menu_open': 'Abrir menú',
     'nav.menu_close': 'Cerrar menú',
     'nav.skip_to_content': 'Saltar al contenido principal',
-    
+
     // Hero
     'hero.badge': 'Disponible para nuevas oportunidades',
     'hero.role': 'Data Engineer Jr.',
@@ -33,26 +33,96 @@ export const ui = {
     'hero.cta_resume': 'Descargar CV',
     'hero.cta_contact': 'Contactar',
     'hero.stack_label': 'Stack principal:',
-    
+
     // Accesibilidad & UI
     'theme.toggle_label': 'Alternar tema claro y oscuro',
     'lang.toggle_label': 'Cambiar idioma',
-    
-    // Placeholders para secciones siguientes (Fases 2, 3, 4)
-    'sections.projects_title': 'Proyectos Técnicos',
-    'sections.projects_subtitle': 'Casos de estudio end-to-end con código fuente, diagramas de arquitectura y dashboards desplegados.',
+
+    // Secciones Generales
+    'sections.projects_title': 'Proyectos Técnicos & Casos de Estudio',
+    'sections.projects_subtitle': 'Arquitecturas implementadas con código fuente verificable, decisiones de diseño, modelado SQL/dbt y pruebas de calidad.',
     'sections.skills_title': 'Habilidades Técnicas',
     'sections.about_title': 'Sobre Mí & Formación',
     'sections.contact_title': 'Contacto',
     'sections.contact_desc': '¿Tienes una vacante o quieres hablar sobre ingeniería de datos? Conversemos.',
     'sections.copy_email': 'Copiar correo',
     'sections.email_copied': '¡Copiado!',
+
+    // Habilidades Técnicas por Dominio
+    'skills.section_badge': '[02] // COMPETENCIAS TÉCNICAS',
+    'skills.section_title': 'Habilidades Técnicas por Dominio',
+    'skills.section_subtitle': 'Competencias aplicadas en arquitecturas reales (Databricks, dbt Cloud, Delta Lake), priorizando robustez de pipelines, reproducibilidad y optimización de recursos.',
+    'skills.core_badge': 'Core',
+    'skills.practices_title': 'Criterio & Buenas Prácticas:',
+    'skills.applied_in': 'Evidencia en proyecto:',
+    'skills.view_case_study': 'Ver caso de estudio',
+
+    // Sobre Mí & Filosofía de Ingeniería
+    'about.section_badge': '[03] // PERFIL & TRAYECTORIA',
+    'about.section_title': 'Sobre Mí & Enfoque de Ingeniería',
+    'about.section_subtitle': 'Data Engineer Jr. con base en desarrollo de software, mentalidad analítica y un fuerte compromiso con el modelado en SQL, la calidad de datos y la reproducibilidad.',
+    'about.story_p1': 'Soy Data Engineer Jr con una sólida formación en lógica de programación y desarrollo de software, especializado en el ecosistema Lakehouse y pipelines analíticos. Mi transición hacia la ingeniería de datos nace del interés por resolver el desafío fundamental: transformar volúmenes de datos crudos y heterogéneos en capas confiables, estructuradas y listas para la toma de decisiones.',
+    'about.story_p2': 'Mi diferencial radica en combinar buenas prácticas de desarrollo de software (control de versiones estructurado, modularización, pruebas automatizadas y desacoplamiento) con rigor analítico en SQL y dbt. Prefiero comprender en profundidad cada etapa de transformación antes de apresurar la automatización, asegurando que cada tabla tenga linaje claro y reglas de validación explícitas.',
+    'about.principles_title': 'Principios de Ingeniería de Datos',
+    'about.p1_title': 'SQL Analítico sobre scripts imperativos',
+    'about.p1_desc': 'Aprovecho el poder de los motores analíticos para modelado dimensional y agregaciones en SQL nativo, reservando Python para la extracción, orquestación y aserciones de integración.',
+    'about.p2_title': 'Diseño Defensivo & Fail-Fast',
+    'about.p2_desc': 'Prevenir datos corruptos mediante TRY_CAST, deduplicación con ROW_NUMBER(), validación de unicidad y no-nulos en dbt, deteniendo la propagación antes de impactar las capas de consumo.',
+    'about.p3_title': 'Idempotencia & Eficiencia de Recursos',
+    'about.p3_desc': 'Diseño pipelines batch capaces de reejecutarse sin generar duplicados, gestionando ventanas históricas móviles mediante MERGE y DELETE bajo restricciones reales de cómputo.',
+    'about.education_title': 'Formación & Aprendizaje Continuo',
+    'about.edu_de_title': 'Especialización en Data Engineering & Analytics',
+    'about.edu_de_desc': 'Formación práctica continua centrada en arquitecturas Lakehouse (Databricks, Delta Lake), modelado dimensional Kimball (dbt), PySpark y pipelines orquestados.',
+    'about.edu_dev_title': 'Fundamentos de Desarrollo de Software',
+    'about.edu_dev_desc': 'Bases de arquitectura cliente-servidor, consumo y diseño de APIs REST, bases de datos relacionales (PostgreSQL/SQL), Git y lógica algorítmica.',
+    'about.value_title': '¿Qué aporto a un equipo de datos?',
+    'about.val_1': 'Comprensión analítica de esquemas antes de escribir código.',
+    'about.val_2': 'Mantenimiento, depuración y monitoreo riguroso de pipelines ETL/ELT.',
+    'about.val_3': 'Modelado modular en dbt con tests y documentación viva.',
+    'about.val_4': 'Capacidad para construir prototipos rápidos y tableros interactivos con Streamlit.',
+    'about.location_title': 'Ubicación & Modalidad',
+    'about.location_val': 'Argentina · Disponible para trabajo Remoto',
+    'about.languages_title': 'Idiomas',
+    'about.languages_val': 'Español (Nativo) · Inglés (Lectura y documentación técnica fluida)',
+
+    // Contacto Directo
+    'contact.section_badge': '[04] // CONTACTO DIRECTO',
+    'contact.section_title': 'Iniciemos una Conversación',
+    'contact.section_subtitle': 'Actualmente en búsqueda activa de oportunidades como Data Engineer Jr. Si tienes una vacante o buscas sumar a alguien con criterio técnico, hablemos.',
+    'contact.card_title': 'Canales de Comunicación Directa',
+    'contact.email_label': 'Correo electrónico principal:',
+    'contact.copy_email': 'Copiar correo',
+    'contact.copied': '¡Copiado!',
+    'contact.open_email': 'Enviar correo',
+    'contact.linkedin_label': 'Perfil en LinkedIn',
+    'contact.github_label': 'Repositorios en GitHub',
+    'contact.cv_label': 'Currículum Vitae (PDF)',
+    'contact.cv_download': 'Descargar CV',
+    'contact.availability_title': 'Disponibilidad:',
+    'contact.availability_desc': 'Inmediata · Remoto · UTC-3 (Argentina)',
+    'contact.response_time': 'Respuesta habitual en menos de 24 horas',
+    'footer.built_with': 'Desarrollado con Astro y Tailwind CSS · Cero dependencias superfluas',
+
+    // Proyectos (Case Studies)
+    'projects.problem': 'Problema de negocio / técnico',
+    'projects.data_source': 'Fuente & formato de datos',
+    'projects.architecture': 'Arquitectura del Pipeline',
+    'projects.architecture_flow': 'Flujo de datos (DAG)',
+    'projects.transformations': 'Transformaciones & Modelado',
+    'projects.quality': 'Control de Calidad & Testing',
+    'projects.results': 'Resultados & Métricas',
+    'projects.repo': 'Ver Repositorio',
+    'projects.live': 'Ver Dashboard en Vivo',
+    'projects.live_pending': 'Deploy en Streamlit (En preparación)',
+    'projects.tech_stack': 'Tecnologías utilizadas:',
+    'projects.status_completed': 'Proyecto Completado',
+    'projects.status_active': 'Pipeline Operativo',
   },
   en: {
     // Metadata & SEO
     'meta.title': 'Bernardo Arrechea | Junior Data Engineer',
     'meta.description': 'Professional portfolio of Bernardo Arrechea, Junior Data Engineer specialized in ETL/ELT pipelines, dimensional modeling, analytical SQL, dbt, and Databricks.',
-    
+
     // Navigation
     'nav.projects': 'Projects',
     'nav.skills': 'Skills',
@@ -62,7 +132,7 @@ export const ui = {
     'nav.menu_open': 'Open menu',
     'nav.menu_close': 'Close menu',
     'nav.skip_to_content': 'Skip to main content',
-    
+
     // Hero
     'hero.badge': 'Available for new opportunities',
     'hero.role': 'Junior Data Engineer',
@@ -73,20 +143,89 @@ export const ui = {
     'hero.cta_resume': 'Download Resume',
     'hero.cta_contact': 'Get in touch',
     'hero.stack_label': 'Core stack:',
-    
+
     // Accessibility & UI
     'theme.toggle_label': 'Toggle light and dark theme',
     'lang.toggle_label': 'Switch language',
-    
-    // Placeholders for subsequent sections
-    'sections.projects_title': 'Technical Projects',
-    'sections.projects_subtitle': 'End-to-end case studies with source code, architecture diagrams, and live dashboards.',
+
+    // General Sections
+    'sections.projects_title': 'Technical Projects & Case Studies',
+    'sections.projects_subtitle': 'Production-ready architectures with verifiable source code, engineering decisions, SQL/dbt modeling, and quality tests.',
     'sections.skills_title': 'Technical Skills',
     'sections.about_title': 'About Me & Education',
     'sections.contact_title': 'Get In Touch',
     'sections.contact_desc': 'Have an open position or want to discuss data engineering? Let\'s talk.',
     'sections.copy_email': 'Copy email',
     'sections.email_copied': 'Copied!',
+
+    // Technical Skills by Domain
+    'skills.section_badge': '[02] // TECHNICAL COMPETENCIES',
+    'skills.section_title': 'Technical Skills by Domain',
+    'skills.section_subtitle': 'Competencies applied across production-minded architectures (Databricks, dbt Cloud, Delta Lake), prioritizing pipeline robustness, reproducibility, and resource efficiency.',
+    'skills.core_badge': 'Core',
+    'skills.practices_title': 'Key Practices & Engineering Criteria:',
+    'skills.applied_in': 'Project Evidence:',
+    'skills.view_case_study': 'View case study',
+
+    // About Me & Engineering Mindset
+    'about.section_badge': '[03] // BACKGROUND & MINDSET',
+    'about.section_title': 'About Me & Engineering Mindset',
+    'about.section_subtitle': 'Junior Data Engineer with a software development background, analytical rigor, and a strong commitment to SQL modeling, code quality, and reproducibility.',
+    'about.story_p1': 'I am a Junior Data Engineer with a strong foundation in programming logic and software development, specializing in Lakehouse architectures and analytical data pipelines. My pivot toward data engineering stems from a passion for solving the core data challenge: turning raw, disparate payloads into reliable, structured, and query-optimized analytical assets.',
+    'about.story_p2': 'My core strength is applying software engineering best practices (structured Git workflows, modular code, automated testing, and strict separation of concerns) to data workflows using SQL and dbt. I prioritize understanding every single transformation step before automating, ensuring complete lineage, defensive typing, and explicit validation rules.',
+    'about.principles_title': 'Data Engineering Principles',
+    'about.p1_title': 'Set-based SQL over ad-hoc imperative scripts',
+    'about.p1_desc': 'Leveraging analytical query engines for Kimball dimensional modeling and aggregations in native SQL, while keeping Python focused on extraction, orchestration, and programmatic assertions.',
+    'about.p2_title': 'Defensive Modeling & Fail-Fast',
+    'about.p2_desc': 'Preventing pipeline corruption with TRY_CAST, ROW_NUMBER() deduplication, and automated dbt unique/not_null tests, halting execution before flawed records reach reporting marts.',
+    'about.p3_title': 'Idempotency & Resource Efficiency',
+    'about.p3_desc': 'Designing batch pipelines that can be safely re-run without creating duplicates, managing rolling historical windows via MERGE and DELETE under real compute constraints.',
+    'about.education_title': 'Education & Continuous Learning',
+    'about.edu_de_title': 'Specialization in Data Engineering & Analytics',
+    'about.edu_de_desc': 'Hands-on continuous curriculum centered on Lakehouse architectures (Databricks, Delta Lake), Kimball dimensional modeling (dbt), PySpark, and orchestrated workflows.',
+    'about.edu_dev_title': 'Software Development Foundations',
+    'about.edu_dev_desc': 'Core knowledge in client-server architecture, REST API design and consumption, relational databases (PostgreSQL/SQL), Git workflows, and algorithmic logic.',
+    'about.value_title': 'How I Add Immediate Value to Data Teams',
+    'about.val_1': 'Thorough inspection and schema validation of raw data before automation.',
+    'about.val_2': 'Reliable maintenance, troubleshooting, and debugging of batch ETL/ELT pipelines.',
+    'about.val_3': 'Modular dbt model development with comprehensive test suites and documentation.',
+    'about.val_4': 'Rapid prototyping and interactive analytics dashboards delivered with Streamlit.',
+    'about.location_title': 'Location & Availability',
+    'about.location_val': 'Argentina · Available for Remote roles',
+    'about.languages_title': 'Languages',
+    'about.languages_val': 'Spanish (Native) · English (Technical reading and documentation proficiency)',
+
+    // Direct Contact
+    'contact.section_badge': '[04] // DIRECT CONTACT',
+    'contact.section_title': 'Let\'s Start a Conversation',
+    'contact.section_subtitle': 'Actively seeking opportunities as a Junior Data Engineer. If you have an open role or are looking to add someone with solid technical rigor, let\'s connect.',
+    'contact.card_title': 'Direct Communication Channels',
+    'contact.email_label': 'Primary Email:',
+    'contact.copy_email': 'Copy email',
+    'contact.copied': 'Copied!',
+    'contact.open_email': 'Send email',
+    'contact.linkedin_label': 'LinkedIn Profile',
+    'contact.github_label': 'GitHub Repositories',
+    'contact.cv_label': 'Curriculum Vitae (PDF)',
+    'contact.cv_download': 'Download CV',
+    'contact.availability_title': 'Availability:',
+    'contact.availability_desc': 'Immediate · Remote · UTC-3 (Argentina)',
+    'contact.response_time': 'Typical response in under 24 hours',
+    'footer.built_with': 'Built with Astro and Tailwind CSS · Zero superfluous dependencies',
+
+    // Projects (Case Studies)
+    'projects.problem': 'Business & Technical Problem',
+    'projects.data_source': 'Data Source & Ingestion',
+    'projects.architecture': 'Pipeline Architecture',
+    'projects.architecture_flow': 'Data Flow (DAG)',
+    'projects.transformations': 'Transformations & Modeling',
+    'projects.quality': 'Data Quality & Testing',
+    'projects.results': 'Results & Deliverables',
+    'projects.repo': 'View Repository',
+    'projects.live': 'View Live Dashboard',
+    'projects.live_pending': 'Streamlit Deployment (In progress)',
+    'projects.tech_stack': 'Technologies used:',
+    'projects.status_completed': 'Completed Project',
+    'projects.status_active': 'Operational Pipeline',
   },
 } as const;
-

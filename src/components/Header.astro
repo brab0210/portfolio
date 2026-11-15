@@ -13,45 +13,47 @@ const t = useTranslations(lang);
 const basePath = `/${lang}/`;
 ---
 
-<header class="sticky top-0 z-50 w-full backdrop-blur-md bg-[#f8fafc]/85 dark:bg-[#09090b]/85 border-b border-zinc-200/80 dark:border-zinc-800/80 transition-colors">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-    <!-- Brand / Identifier -->
+<header class="sticky top-0 z-50 w-full backdrop-blur-md bg-[#f8fafc]/90 dark:bg-[#09090b]/90 border-b border-zinc-200/80 dark:border-zinc-800/80 transition-colors">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+    <!-- Brand / Identifier (Perfectamente alineado horizontal y verticalmente) -->
     <a
       href={basePath}
-      class="group flex items-center gap-2 text-sm font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+      class="group flex items-center gap-2.5 text-sm font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors shrink-0"
     >
-      <span class="inline-flex items-center justify-center w-7 h-7 rounded-md bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 font-mono text-xs font-bold tracking-normal group-hover:scale-105 transition-transform">
+      <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 font-mono text-xs font-bold tracking-normal group-hover:scale-105 transition-transform shrink-0 shadow-2xs">
         BA
       </span>
-      <span class="flex flex-col sm:flex-row sm:items-baseline sm:gap-1.5 leading-tight">
-        <span>Bernardo Arrechea</span>
-        <span class="text-[11px] font-mono font-normal text-zinc-500 dark:text-zinc-400">
+      <div class="flex flex-col justify-center leading-none">
+        <span class="font-bold text-zinc-950 dark:text-zinc-50 whitespace-nowrap text-sm sm:text-base tracking-tight">
+          Bernardo Arrechea
+        </span>
+        <span class="font-mono text-[11px] font-normal text-zinc-500 dark:text-zinc-400 mt-1 tracking-tight whitespace-nowrap">
           [data.engineer]
         </span>
-      </span>
+      </div>
     </a>
 
-    <!-- Desktop Navigation & Controls -->
-    <div class="hidden md:flex items-center gap-6">
+    <!-- Desktop Navigation & Controls (Activo en >=1024px para evitar colisiones en tablet) -->
+    <div class="hidden lg:flex items-center gap-6">
       <nav aria-label="Navegación principal">
         <ul class="flex items-center gap-5 text-xs font-medium text-zinc-600 dark:text-zinc-400">
           <li>
-            <a href="#proyectos" class="hover:text-zinc-950 dark:hover:text-zinc-100 transition-colors">
+            <a href="#proyectos" class="hover:text-zinc-950 dark:hover:text-zinc-100 transition-colors whitespace-nowrap py-1">
               {t('nav.projects')}
             </a>
           </li>
           <li>
-            <a href="#habilidades" class="hover:text-zinc-950 dark:hover:text-zinc-100 transition-colors">
+            <a href="#habilidades" class="hover:text-zinc-950 dark:hover:text-zinc-100 transition-colors whitespace-nowrap py-1">
               {t('nav.skills')}
             </a>
           </li>
           <li>
-            <a href="#sobre-mi" class="hover:text-zinc-950 dark:hover:text-zinc-100 transition-colors">
+            <a href="#sobre-mi" class="hover:text-zinc-950 dark:hover:text-zinc-100 transition-colors whitespace-nowrap py-1">
               {t('nav.about')}
             </a>
           </li>
           <li>
-            <a href="#contacto" class="hover:text-zinc-950 dark:hover:text-zinc-100 transition-colors">
+            <a href="#contacto" class="hover:text-zinc-950 dark:hover:text-zinc-100 transition-colors whitespace-nowrap py-1">
               {t('nav.contact')}
             </a>
           </li>
@@ -66,7 +68,7 @@ const basePath = `/${lang}/`;
           href="/cv-bernardo-arrechea.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-mono font-medium rounded-md border border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-100 bg-white dark:bg-zinc-900 transition-colors"
+          class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-mono font-medium rounded-md border border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-100 bg-white dark:bg-zinc-900 transition-colors whitespace-nowrap shadow-2xs"
           title={t('hero.cta_resume')}
         >
           <span>{t('nav.resume')}</span>
@@ -76,19 +78,33 @@ const basePath = `/${lang}/`;
         </a>
 
         <LanguageToggle lang={lang} />
-        <ThemeToggle lang={lang} />
+        <ThemeToggle lang={lang} id="theme-toggle-desktop" />
       </div>
     </div>
 
-    <!-- Mobile Menu Button & Mobile Controls -->
-    <div class="flex md:hidden items-center gap-2">
-      <LanguageToggle lang={lang} />
-      <ThemeToggle lang={lang} />
+    <!-- Mobile & Tablet Controls (<1024px) -->
+    <div class="flex lg:hidden items-center gap-2">
+      <!-- CV visible en tablet/mobile horizontal -->
+      <a
+        href="/cv-bernardo-arrechea.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden sm:inline-flex items-center gap-1 px-2 py-1 text-xs font-mono font-medium rounded-md border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 bg-white dark:bg-zinc-900 shadow-2xs"
+      >
+        <span>{t('nav.resume')}</span>
+        <svg class="w-3 h-3 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+      </a>
 
+      <LanguageToggle lang={lang} />
+      <ThemeToggle lang={lang} id="theme-toggle-mobile" />
+
+      <!-- Botón de Menú Móvil / Tablet -->
       <button
         id="mobile-menu-button"
         type="button"
-        class="p-2 rounded-lg text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/60 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500"
+        class="p-2 rounded-lg text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/60 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 shrink-0"
         aria-controls="mobile-menu"
         aria-expanded="false"
         aria-label={t('nav.menu_open')}
@@ -103,39 +119,39 @@ const basePath = `/${lang}/`;
     </div>
   </div>
 
-  <!-- Mobile Dropdown Menu -->
+  <!-- Mobile & Tablet Dropdown Menu -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden border-b border-zinc-200 dark:border-zinc-800 bg-[#f8fafc] dark:bg-[#09090b] px-4 pt-2 pb-4 space-y-3"
+    class="hidden lg:hidden border-b border-zinc-200 dark:border-zinc-800 bg-[#f8fafc] dark:bg-[#09090b] px-4 pt-3 pb-5 space-y-3 shadow-lg"
   >
-    <nav aria-label="Navegación móvil">
-      <ul class="flex flex-col space-y-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+    <nav aria-label="Navegación móvil y tablet">
+      <ul class="flex flex-col space-y-2.5 text-sm font-medium text-zinc-700 dark:text-zinc-300">
         <li>
-          <a href="#proyectos" class="mobile-nav-link block py-1.5 hover:text-zinc-950 dark:hover:text-zinc-100">
+          <a href="#proyectos" class="mobile-nav-link block py-1.5 hover:text-zinc-950 dark:hover:text-zinc-100 whitespace-nowrap">
             {t('nav.projects')}
           </a>
         </li>
         <li>
-          <a href="#habilidades" class="mobile-nav-link block py-1.5 hover:text-zinc-950 dark:hover:text-zinc-100">
+          <a href="#habilidades" class="mobile-nav-link block py-1.5 hover:text-zinc-950 dark:hover:text-zinc-100 whitespace-nowrap">
             {t('nav.skills')}
           </a>
         </li>
         <li>
-          <a href="#sobre-mi" class="mobile-nav-link block py-1.5 hover:text-zinc-950 dark:hover:text-zinc-100">
+          <a href="#sobre-mi" class="mobile-nav-link block py-1.5 hover:text-zinc-950 dark:hover:text-zinc-100 whitespace-nowrap">
             {t('nav.about')}
           </a>
         </li>
         <li>
-          <a href="#contacto" class="mobile-nav-link block py-1.5 hover:text-zinc-950 dark:hover:text-zinc-100">
+          <a href="#contacto" class="mobile-nav-link block py-1.5 hover:text-zinc-950 dark:hover:text-zinc-100 whitespace-nowrap">
             {t('nav.contact')}
           </a>
         </li>
-        <li class="pt-2 border-t border-zinc-200 dark:border-zinc-800">
+        <li class="pt-2 border-t border-zinc-200 dark:border-zinc-800 sm:hidden">
           <a
             href="/cv-bernardo-arrechea.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-zinc-900 dark:text-zinc-100"
+            class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-zinc-900 dark:text-zinc-100 py-1"
           >
             <span>{t('hero.cta_resume')}</span>
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -171,4 +187,3 @@ const basePath = `/${lang}/`;
     });
   });
 </script>
-

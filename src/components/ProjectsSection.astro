@@ -1,0 +1,45 @@
+---
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import { projectsData } from '../data/projects';
+import ProjectCard from './ProjectCard.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const projects = projectsData[lang];
+---
+
+<section
+  id="proyectos"
+  class="scroll-reveal opacity-0 translate-y-8 transition-all duration-500 ease-out space-y-8 scroll-mt-20"
+  aria-labelledby="projects-section-title"
+>
+  <!-- Section Title & Subtitle -->
+  <div class="border-b border-zinc-200/80 dark:border-zinc-800/80 pb-4">
+    <div class="flex items-center gap-2 mb-1">
+      <span class="font-mono text-xs uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-semibold">
+        [01] // Pipeline Case Studies
+      </span>
+    </div>
+    <h2
+      id="projects-section-title"
+      class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50"
+    >
+      {t('sections.projects_title')}
+    </h2>
+    <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-1 max-w-2xl leading-relaxed">
+      {t('sections.projects_subtitle')}
+    </p>
+  </div>
+
+  <!-- Case Studies List -->
+  <div class="space-y-8">
+    {projects.map((project) => (
+      <ProjectCard project={project} lang={lang} />
+    ))}
+  </div>
+</section>

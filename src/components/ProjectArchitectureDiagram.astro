@@ -1,0 +1,40 @@
+---
+import type { ArchitectureNode } from '../data/projects';
+
+interface Props {
+  nodes: ArchitectureNode[];
+}
+
+const { nodes } = Astro.props;
+---
+
+<div class="space-y-2">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+    {nodes.map((node, index) => (
+      <div class="relative flex flex-col justify-between p-3 rounded-lg border border-zinc-200/90 dark:border-zinc-800/90 bg-zinc-50/70 dark:bg-zinc-950/60 shadow-2xs">
+        <div>
+          <div class="flex items-center justify-between gap-1 mb-1.5">
+            <span class="font-mono text-[10px] font-bold text-zinc-400 dark:text-zinc-500">
+              {node.step}
+            </span>
+            <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-zinc-200/70 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+              {node.tech}
+            </span>
+          </div>
+          <h4 class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
+            {node.name}
+          </h4>
+          <p class="text-[11px] text-zinc-600 dark:text-zinc-400 mt-1 leading-normal">
+            {node.role}
+          </p>
+        </div>
+
+        {index < nodes.length - 1 && (
+          <div class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 text-zinc-400 dark:text-zinc-600 text-xs select-none">
+            &rarr;
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</div>

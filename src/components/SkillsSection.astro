@@ -1,0 +1,45 @@
+---
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import { skillsData } from '../data/skills';
+import SkillDomainCard from './SkillDomainCard.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const domains = skillsData[lang];
+---
+
+<section
+  id="habilidades"
+  class="scroll-reveal opacity-0 translate-y-8 transition-all duration-500 ease-out space-y-8 scroll-mt-20"
+  aria-labelledby="skills-section-heading"
+>
+  <!-- Section Header -->
+  <div class="border-b border-zinc-200/80 dark:border-zinc-800/80 pb-5 space-y-2">
+    <div class="flex items-center gap-2">
+      <span class="font-mono text-xs uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-semibold">
+        {t('skills.section_badge')}
+      </span>
+    </div>
+    <h2
+      id="skills-section-heading"
+      class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50"
+    >
+      {t('skills.section_title')}
+    </h2>
+    <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 max-w-3xl leading-relaxed">
+      {t('skills.section_subtitle')}
+    </p>
+  </div>
+
+  <!-- Domain Cards Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    {domains.map((domain) => (
+      <SkillDomainCard domain={domain} lang={lang} />
+    ))}
+  </div>
+</section>
